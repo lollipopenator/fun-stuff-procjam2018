@@ -113,7 +113,7 @@ AnimTime.prototype.update = function() {
 
 var utilities = {
 	createThree: function(holder, init, update, postRender, preventRender) {
-		// ANIMATION CALL 
+		// ANIMATION CALL
 		function animate() {
 			requestAnimationFrame(animate);
 			render();
@@ -146,12 +146,12 @@ var utilities = {
 
 		renderer.setClearColor(0x000000, 0);
 
-		// CREATE CAMERA 				
+		// CREATE CAMERA
 		camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 2000);
 		camera.position.set(0, 700, 800);
 
 
-		// CREATE SCENE 		
+		// CREATE SCENE
 		let scene = new THREE.Scene();
 
 
@@ -350,7 +350,15 @@ var utilities = {
 			let time = new AnimTime()
 
 			g.size(w, h);
-			g.colorMode(g.HSB, 1);
+			//g.colorMode(g.HSB, 1); // original settings from galaxykate's slidertoy
+
+			// settings added by lollipopenator (from generative-design book by Lazzeroni(ed))
+			g.colorMode(g.HSB, 360, 100, 100, 100);
+			g.smooth();
+			g.noFill();
+			g.background(360);
+			// end settings-from-generative-design-book
+
 			g.ellipseMode(g.CENTER_RADIUS);
 			if (onStart) {
 				g.pushMatrix();
@@ -2092,7 +2100,7 @@ let bezierSectionCurve = (function() {
 
 
 
-	// Given a point and 
+	// Given a point and
 	var setOffsetPts = (function() {
 		// Calculate 3 offset points, use them to calculate the center angle
 
@@ -2113,7 +2121,7 @@ let bezierSectionCurve = (function() {
 				let p = pts[i + 1];
 				p.dir.setToAverageDirection(pts[i], pts[i + 1], pts[i + 2]);
 
-				// Calculate the offset pts 
+				// Calculate the offset pts
 				for (var j = 0; j < fRads.length; j++) {
 					let n = fRads[j](t + dt * (i - 2), j)
 
@@ -2351,7 +2359,7 @@ function toCamelCase(str) {
 }
 
 
-//returns an value for an int or float, but undefined for anything else	
+//returns an value for an int or float, but undefined for anything else
 // -1.23 => -1.23
 // -1.2x => undefined
 const toStrictNumberIsInt = /^[+-]?\d+$/;

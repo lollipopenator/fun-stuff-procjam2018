@@ -9,7 +9,7 @@ $(function() {
 		// Init
 		processing = g;
 
-	
+
 		// After creating processing, create 3JS
 		utilities.createThree($("#slidertoy-threeview"), (time, scene, orbitalCamera) => {
 			// console.log("init")
@@ -22,7 +22,9 @@ $(function() {
 
 
 
-			editor.setType("terrain");
+			//editor.setType("terrain");
+			//editor.setType("flower");
+			editor.setType("polygon");
 		}, () => {});
 	})
 
